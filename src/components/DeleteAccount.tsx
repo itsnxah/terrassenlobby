@@ -66,8 +66,9 @@ export function DeleteAccount() {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="text-xs text-white/30 underline-offset-4 transition hover:text-pink-200 hover:underline"
+        className="flex w-full items-center gap-2.5 rounded-2xl border border-pink-400/30 bg-pink-500/[0.08] px-4 py-3 text-left text-sm font-medium text-pink-100 transition hover:border-pink-400/50 hover:bg-pink-500/[0.13]"
       >
+        <span className="text-base">🗑️</span>
         Konto endgültig löschen
       </button>
     );
