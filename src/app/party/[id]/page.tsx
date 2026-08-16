@@ -9,6 +9,7 @@ import { PartyActions } from "@/components/PartyActions";
 import { FriendNotify } from "@/components/FriendNotify";
 import { RatingDisplay } from "@/components/StarRating";
 import { GuestPartyPanel } from "@/components/GuestPartyPanel";
+import { PartyGallery } from "@/components/PartyGallery";
 import { JoinPartyForm } from "./JoinPartyForm";
 
 export const dynamic = "force-dynamic";
@@ -90,8 +91,19 @@ export default async function PartyDetailPage({
 
   const exactAddress = addressRow?.exact_address ?? null;
   const theme = partyTheme(party);
-  const cover = party.coverPhotoUrl || party.photoUrls[0] || null;
-  const gallery = cover ? party.photoUrls.filter((u) => u !== cover) : party.photoUrls;
+
+  // Mit ID statt nur URL geladen – die Galerie hängt daran ihre Kommentare auf.
+  const { data: photoRows } = await supabase
+    .from("party_photos")
+    .select("id, url")
+    .eq("party_id", party.id)
+    .order("created_at", { ascending: true });
+
+  const photos = (photoRows ?? []) as { id: string; url: string }[];
+  const coverPhoto =
+    photos.find((p) => p.url === party.coverPhotoUrl) ?? photos[0] ?? null;
+  const cover = coverPhoto?.url ?? null;
+  const gallery = coverPhoto ? photos.filter((p) => p.id !== coverPhoto.id) : photos;
 
   const totalGuests = party.startCapacity + party.joinedGuestsCount;
   const freeSpots =
@@ -144,6 +156,14 @@ export default async function PartyDetailPage({
     ownRequest = reqRow ?? null;
     ownRating = ratingRow?.rating ?? null;
   }
+
+  // Kommentieren darf nur, wer wirklich da ist – der Host, oder ein Gast,
+  // den der Host per "Ich bin da" eingecheckt hat. Nur zugesagt reicht
+  // nicht. Die Datenbank prüft das ohnehin nochmal (siehe
+  // supabase/fotokommentare.sql), das hier steuert nur die Anzeige.
+  const canComment =
+    Boolean(user) &&
+    (user?.id === party.hostId || (ownRequest?.status === "accepted" && ownRequest?.checked_in === true));
 
   return (
     <article className="space-y-6">
@@ -259,24 +279,7 @@ export default async function PartyDetailPage({
       </section>
 
       {/* --- Weitere Fotos --------------------------------------------- */}
-      {gallery.length > 0 && (
-        <section className="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {gallery.map((url) => (
-            <div
-              key={url}
-              className="h-40 w-56 shrink-0 snap-start overflow-hidden rounded-xl2 border border-white/10"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={url}
-                alt=""
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </section>
-      )}
+      {gallery.length > 0 && <PartyGallery photos={gallery} canComment={canComment} />}
 
       {/* --- Eckdaten -------------------------------------------------- */}
       <section className="grid grid-cols-2 gap-3">
