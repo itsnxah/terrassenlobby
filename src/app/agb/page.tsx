@@ -125,12 +125,13 @@ export default function AgbPage() {
 
       <H2>11. Beendigung</H2>
       <P>
-        Du kannst die Löschung deines Kontos jederzeit per E-Mail an{" "}
-        {BETREIBER.email} verlangen; eigene Partys kannst du jederzeit selbst
-        schließen oder löschen. Wir können das Nutzungsverhältnis bei
-        erheblichen oder wiederholten Verstößen gegen diese Bedingungen beenden –
-        vorher weisen wir dich in der Regel darauf hin, außer bei schweren
-        Verstößen.
+        Du kannst dein Konto jederzeit selbst in deinem Profil unter „Konto
+        endgültig löschen“ entfernen – das wirkt sofort und lässt sich nicht
+        rückgängig machen. Alternativ per E-Mail an {BETREIBER.email}. Eigene
+        Partys kannst du unabhängig davon jederzeit selbst schließen oder
+        löschen. Wir können das Nutzungsverhältnis bei erheblichen oder
+        wiederholten Verstößen gegen diese Bedingungen beenden – vorher weisen
+        wir dich in der Regel darauf hin, außer bei schweren Verstößen.
       </P>
 
       <H2>12. Änderungen und Schlussbestimmungen</H2>

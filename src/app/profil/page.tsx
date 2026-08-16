@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { RatingDisplay } from "@/components/StarRating";
+import { DeleteAccount } from "@/components/DeleteAccount";
 
 export const dynamic = "force-dynamic";
 
@@ -306,6 +307,12 @@ export default async function ProfilPage() {
         Wer dich wie bewertet hat, ist für niemanden einsehbar – auch für dich
         nicht. Angezeigt werden ausschließlich Durchschnitt und Anzahl.
       </p>
+
+      {/* --- Konto verwalten ------------------------------------------- */}
+      <section className="space-y-3 border-t border-white/[0.07] pt-6">
+        <h2 className="section-title">Konto</h2>
+        <DeleteAccount />
+      </section>
     </div>
   );
 }

@@ -117,7 +117,7 @@ export default function DatenschutzPage() {
           "Genaue Party-Adressen werden spätestens 30 Tage nach dem Ende der Party automatisch gelöscht",
           "Beitrittsanfragen werden spätestens 90 Tage nach dem Ende der Party automatisch gelöscht",
           "Löscht ein Host seine Party, verschwinden Adresse, Fotos, Anfragen und Bewertungen dieser Party sofort mit",
-          "Kontodaten werden gelöscht, sobald du die Löschung deines Kontos verlangst",
+          "Kontodaten werden sofort und unwiderruflich gelöscht, sobald du dein Konto in deinem Profil unter „Konto endgültig löschen“ selbst entfernst – alternativ per E-Mail an uns",
           "Meldungen und die dazugehörigen Entscheidungen bewahren wir auf, solange das zur Bearbeitung, zur Dokumentation und zur Abwehr wiederholten Missbrauchs erforderlich ist",
         ]}
       />
