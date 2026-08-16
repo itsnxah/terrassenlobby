@@ -121,8 +121,7 @@ export default async function FeedPage({
           </h1>
 
           <p className="mt-3 max-w-md text-sm leading-relaxed text-white/[0.55]">
-            Offene Lobbys in deiner Nähe – wie ein Spiele-Server, nur mit
-            echten Leuten, echten Terrassen und echtem Sound.
+            Partys in deiner Nähe – trete den Party-Servern in Reallife bei.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
