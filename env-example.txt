@@ -1,0 +1,30 @@
+# Kopiere diesen Inhalt in eine Datei namens ".env.local" im Projektordner.
+# Zu finden in deinem Supabase-Projekt unter: Project Settings -> API
+
+NEXT_PUBLIC_SUPABASE_URL=https://DEIN-PROJEKT.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=dein-anon-key
+
+# ---------------------------------------------------------------------------
+# Optional: E-Mail-Benachrichtigungen
+# Ohne diese Werte laeuft die App normal weiter, verschickt aber keine Mails.
+# ---------------------------------------------------------------------------
+
+# Supabase -> Project Settings -> API -> "service_role" Key.
+# ACHTUNG: Dieser Schluessel hat volle Rechte auf die Datenbank.
+# Niemals ins Frontend, niemals in ein oeffentliches Git-Repository.
+SUPABASE_SERVICE_ROLE_KEY=dein-service-role-key
+
+# API-Key von https://resend.com (kostenloses Kontingent reicht zum Start)
+RESEND_API_KEY=dein-resend-key
+
+# Absenderadresse. Zum Testen funktioniert onboarding@resend.dev,
+# damit erreichst du aber nur die E-Mail-Adresse deines Resend-Kontos.
+# Fuer echte Empfaenger eine eigene Domain in Resend verifizieren.
+NOTIFY_FROM_EMAIL=Terrassenlobby <onboarding@resend.dev>
+
+# Adresse, an die Meldungen gehen (Moderation). Ohne diesen Wert wird bei
+# neuen Meldungen keine Mail verschickt.
+MODERATION_EMAIL=deine@email.de
+
+# Adresse, unter der die App laeuft (fuer die Links in den E-Mails)
+NEXT_PUBLIC_APP_URL=http://localhost:3000

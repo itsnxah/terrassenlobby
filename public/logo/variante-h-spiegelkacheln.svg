@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="tlH" x1="12" y1="6" x2="52" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+    </linearGradient>
+    <clipPath id="tlHball"><circle cx="32" cy="26" r="9.5"/></clipPath>
+  </defs>
+  <!-- Pin -->
+  <path d="M32 8c9.94 0 18 8.06 18 18 0 12-18 30-18 30S14 38 14 26c0-9.94 8.06-18 18-18z"
+        stroke="url(#tlH)" stroke-width="5" stroke-linejoin="round"/>
+  <!-- Kugel aus Spiegelkacheln -->
+  <g clip-path="url(#tlHball)" fill="url(#tlH)">
+    <rect x="23.5" y="17.5" width="5.4" height="5.4" rx="1.1"/>
+    <rect x="30.3" y="17.5" width="5.4" height="5.4" rx="1.1"/>
+    <rect x="37.1" y="17.5" width="5.4" height="5.4" rx="1.1"/>
+    <rect x="23.5" y="24.3" width="5.4" height="5.4" rx="1.1"/>
+    <rect x="30.3" y="24.3" width="5.4" height="5.4" rx="1.1"/>
+    <rect x="37.1" y="24.3" width="5.4" height="5.4" rx="1.1"/>
+    <rect x="23.5" y="31.1" width="5.4" height="5.4" rx="1.1"/>
+    <rect x="30.3" y="31.1" width="5.4" height="5.4" rx="1.1"/>
+    <rect x="37.1" y="31.1" width="5.4" height="5.4" rx="1.1"/>
+  </g>
+</svg>

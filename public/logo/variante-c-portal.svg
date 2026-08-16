@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="tlC" x1="10" y1="4" x2="54" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff4d97"/>
+      <stop offset="0.5" stop-color="#b06bff"/>
+      <stop offset="1" stop-color="#5b9dff"/>
+    </linearGradient>
+  </defs>
+  <!-- Pin -->
+  <path d="M32 4c12.15 0 22 9.85 22 22 0 14.5-22 34-22 34S10 40.5 10 26C10 13.85 19.85 4 32 4z"
+        stroke="url(#tlC)" stroke-width="5" stroke-linejoin="round"/>
+  <!-- Offene Tür / Portal = die Lobby, in die man eintritt -->
+  <path d="M24 37V27a8 8 0 0 1 16 0v10" stroke="url(#tlC)" stroke-width="5" stroke-linecap="round"/>
+</svg>

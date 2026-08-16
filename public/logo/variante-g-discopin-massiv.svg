@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="tlG" x1="12" y1="4" x2="52" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+    </linearGradient>
+    <!-- Maske: Kugel-Umriss und Facetten werden aus dem massiven Pin ausgestanzt -->
+    <mask id="tlGmask">
+      <rect width="64" height="64" fill="#fff"/>
+      <circle cx="32" cy="25" r="10" fill="none" stroke="#000" stroke-width="3"/>
+      <g stroke="#000" stroke-width="2.6">
+        <path d="M32 16.5v17M23 21h18M23 29h18"/>
+      </g>
+    </mask>
+  </defs>
+  <path mask="url(#tlGmask)" fill="url(#tlG)"
+        d="M32 3c12.7 0 23 10.3 23 23 0 15.2-23 35-23 35S9 41.2 9 26C9 13.3 19.3 3 32 3z"/>
+</svg>

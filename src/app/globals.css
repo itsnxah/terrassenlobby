@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------
+   Terrassenlobby Design-System
+   Dunkle Basis + Glasflächen + farbige Kategorie-Akzente.
+   --------------------------------------------------------------- */
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background-color: #07060d;
+  color: #fff;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Segoe UI Variable", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+}
+
+/* Feine, unauffällige Scrollbar (Apple-Look) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.24);
+  background-clip: content-box;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::selection {
+  background: rgba(255, 77, 151, 0.38);
+}
+
+@layer components {
+  /* --- Glasflächen ------------------------------------------------ */
+  .glass {
+    /* War vorher bg-white/[0.045] – auf hellem/farbigem Hintergrund (z. B.
+       Profilseite mit Farbverlauf dahinter) zu durchsichtig, Text kaum lesbar. */
+    @apply rounded-card border border-white/[0.14] bg-white/[0.075] shadow-glass backdrop-blur-2xl;
+  }
+
+  .glass-soft {
+    @apply rounded-xl2 border border-white/[0.09] bg-white/[0.05] backdrop-blur-xl;
+  }
+
+  .glass-bar {
+    @apply border-white/10 bg-ink-950/60 backdrop-blur-2xl backdrop-saturate-150;
+  }
+
+  /* Sanfter Lichtreflex am oberen Rand einer Glaskarte */
+  .glass-sheen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.22),
+      rgba(255, 255, 255, 0) 42%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* --- Buttons ---------------------------------------------------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold
+           transition-all duration-200 active:scale-[0.97];
+  }
+
+  .btn-primary {
+    @apply btn text-white shadow-glow;
+    background-image: linear-gradient(135deg, #ff4d97 0%, #b06bff 52%, #5b9dff 100%);
+  }
+  .btn-primary:hover {
+    filter: brightness(1.08);
+  }
+  .btn-primary:disabled {
+    @apply opacity-50 shadow-none;
+    filter: none;
+  }
+
+  /* Hervorgehobene Hauptaktion ("Lobby erstellen").
+     Bewusst heller und satter als btn-primary, damit sie sich in der
+     dunklen Navigationsleiste klar abhebt. */
+  .create-surface {
+    background-image: linear-gradient(135deg, #ff5fa8 0%, #c86bff 45%, #52a8ff 100%);
+    box-shadow:
+      0 8px 28px -6px rgba(255, 95, 168, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    @apply text-white ring-1 ring-white/30;
+  }
+  .create-surface:hover {
+    filter: brightness(1.12) saturate(1.08);
+  }
+
+  .btn-ghost {
+    @apply btn border border-white/[0.12] bg-white/[0.06] text-white/90 backdrop-blur-xl;
+  }
+  .btn-ghost:hover {
+    @apply border-white/25 bg-white/[0.1];
+  }
+
+  /* --- Formularfelder --------------------------------------------- */
+  .field {
+    @apply w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white
+           placeholder-white/30 outline-none backdrop-blur-xl transition
+           focus:border-white/25 focus:bg-white/[0.07] focus:ring-4 focus:ring-white/[0.06];
+  }
+
+  select.field {
+    @apply appearance-none bg-no-repeat pr-10;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-position: right 0.9rem center;
+    background-size: 1.05rem;
+  }
+
+  select.field option {
+    background-color: #12101f;
+    color: #fff;
+  }
+
+  .label {
+    @apply mb-2 block text-xs font-semibold uppercase tracking-[0.09em] text-white/[0.45];
+  }
+
+  .hint {
+    @apply mt-2 text-xs leading-relaxed text-white/[0.35];
+  }
+
+  /* --- Segmented Control (Apple-Stil) ------------------------------ */
+  .segment {
+    @apply flex gap-1 rounded-2xl border border-white/10 bg-white/[0.04] p-1 backdrop-blur-xl;
+  }
+  .segment-item {
+    @apply flex-1 rounded-[0.9rem] px-4 py-3 text-sm font-medium text-white/[0.55] transition-all duration-200;
+  }
+  .segment-item[data-active="true"] {
+    @apply bg-white/[0.12] text-white shadow-tile;
+  }
+
+  /* --- Chips / Pills ---------------------------------------------- */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium
+           backdrop-blur-md transition;
+  }
+
+  /* --- Sonstiges --------------------------------------------------- */
+  .divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-white/[0.12] to-transparent;
+  }
+
+  .section-title {
+    @apply text-[1.35rem] font-bold tracking-tight text-white;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* --- Leaflet-Karte an das dunkle Design anpassen -------------------- */
+.leaflet-container {
+  background: #07060d !important;
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(18, 16, 31, 0.9) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 1.1rem !important;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55) !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(18, 16, 31, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.leaflet-popup-content a {
+  color: #ff6faa !important;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.leaflet-popup-close-button {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.leaflet-control-zoom a {
+  background: rgba(18, 16, 31, 0.85) !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(14px);
+}
+
+.leaflet-control-attribution {
+  background: rgba(7, 6, 13, 0.72) !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(10px);
+}
+.leaflet-control-attribution a {
+  color: rgba(255, 255, 255, 0.6) !important;
+}

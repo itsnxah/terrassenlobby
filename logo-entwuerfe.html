@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terrassenlobby – Logo-Entwürfe</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 40px 24px 64px;
+    background: #07060d;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.011em;
+    position: relative;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(50vh 50vh at 8% 0%, rgba(255,77,151,0.30), transparent 65%),
+      radial-gradient(46vh 46vh at 96% 12%, rgba(176,107,255,0.28), transparent 65%),
+      radial-gradient(48vh 48vh at 30% 100%, rgba(91,157,255,0.26), transparent 65%);
+    filter: blur(20px);
+  }
+  header { max-width: 1080px; margin: 0 auto 36px; }
+  h1 { font-size: 2rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .sub { color: rgba(255,255,255,0.5); font-size: 0.95rem; margin: 0; max-width: 60ch; line-height: 1.6; }
+  .grid {
+    max-width: 1080px; margin: 0 auto;
+    display: grid; gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  .card {
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.045);
+    backdrop-filter: blur(24px);
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.09);
+  }
+  .tag {
+    display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em;
+    text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 10px;
+  }
+  .card h2 { font-size: 1.15rem; margin: 0 0 6px; }
+  .card p { margin: 0 0 20px; font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.55); }
+  .stage {
+    display: flex; align-items: center; justify-content: center;
+    height: 150px; border-radius: 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 18px;
+  }
+  .row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .sizes { display: flex; align-items: flex-end; gap: 14px; }
+  .icon-tile {
+    width: 66px; height: 66px; border-radius: 17px;
+    background: linear-gradient(135deg, #ff4d97 0%, #b06bff 52%, #5b9dff 100%);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 30px -10px rgba(255,77,151,0.7);
+  }
+  .lockup { display: flex; align-items: center; gap: 9px; margin-top: 18px; }
+  .wordmark {
+    font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em;
+    background: linear-gradient(90deg, #ff4d97, #b06bff, #7aa8ff);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .caption { font-size: 0.68rem; color: rgba(255,255,255,0.35); margin-top: 8px; }
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); margin: 18px 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Logo-Entwürfe</h1>
+  <p class="sub">Vier Varianten, alle auf dem Standort-Pin aufgebaut und geometrisch-minimal gehalten.
+  Jede Karte zeigt das Zeichen groß, in kleinen Größen, als App-Icon und neben der Wortmarke.</p>
+</header>
+
+<div class="grid">
+
+  <!-- ============ A ============ -->
+  <div class="card">
+    <span class="tag">Variante A</span>
+    <h2>Pin &amp; Signal</h2>
+    <p>Der Pin sendet – wie ein Server, der online ist. Verbindet das Finden in der Nähe direkt mit der
+    Grundidee „offene Lobby, tritt bei“. Am eigenständigsten von den vieren.</p>
+
+    <div class="stage">
+      <svg width="104" height="104" viewBox="0 0 64 64" fill="none">
+        <defs><linearGradient id="a1" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+        </linearGradient></defs>
+        <path d="M26 5.5c10.5 0 19 8.5 19 19 0 12.5-19 30-19 30S7 37 7 24.5c0-10.5 8.5-19 19-19z" stroke="url(#a1)" stroke-width="4.5" stroke-linejoin="round"/>
+        <circle cx="26" cy="24.5" r="6.5" fill="url(#a1)"/>
+        <path d="M48 17.5a11 11 0 0 1 0 14" stroke="url(#a1)" stroke-width="4.5" stroke-linecap="round" opacity="0.85"/>
+        <path d="M55.5 11a21 21 0 0 1 0 27" stroke="url(#a1)" stroke-width="4.5" stroke-linecap="round" opacity="0.45"/>
+      </svg>
+    </div>
+
+    <div class="row">
+      <div class="sizes">
+        <svg width="20" height="20" viewBox="0 0 64 64" fill="none">
+          <defs><linearGradient id="a2" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+          </linearGradient></defs>
+          <path d="M26 5.5c10.5 0 19 8.5 19 19 0 12.5-19 30-19 30S7 37 7 24.5c0-10.5 8.5-19 19-19z" stroke="url(#a2)" stroke-width="4.5" stroke-linejoin="round"/>
+          <circle cx="26" cy="24.5" r="6.5" fill="url(#a2)"/>
+          <path d="M48 17.5a11 11 0 0 1 0 14" stroke="url(#a2)" stroke-width="4.5" stroke-linecap="round" opacity="0.85"/>
+          <path d="M55.5 11a21 21 0 0 1 0 27" stroke="url(#a2)" stroke-width="4.5" stroke-linecap="round" opacity="0.45"/>
+        </svg>
+        <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
+          <defs><linearGradient id="a3" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+          </linearGradient></defs>
+          <path d="M26 5.5c10.5 0 19 8.5 19 19 0 12.5-19 30-19 30S7 37 7 24.5c0-10.5 8.5-19 19-19z" stroke="url(#a3)" stroke-width="4.5" stroke-linejoin="round"/>
+          <circle cx="26" cy="24.5" r="6.5" fill="url(#a3)"/>
+          <path d="M48 17.5a11 11 0 0 1 0 14" stroke="url(#a3)" stroke-width="4.5" stroke-linecap="round" opacity="0.85"/>
+          <path d="M55.5 11a21 21 0 0 1 0 27" stroke="url(#a3)" stroke-width="4.5" stroke-linecap="round" opacity="0.45"/>
+        </svg>
+      </div>
+      <div class="icon-tile">
+        <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
+          <path d="M26 5.5c10.5 0 19 8.5 19 19 0 12.5-19 30-19 30S7 37 7 24.5c0-10.5 8.5-19 19-19z" stroke="#fff" stroke-width="4.5" stroke-linejoin="round"/>
+          <circle cx="26" cy="24.5" r="6.5" fill="#fff"/>
+          <path d="M48 17.5a11 11 0 0 1 0 14" stroke="#fff" stroke-width="4.5" stroke-linecap="round" opacity="0.85"/>
+          <path d="M55.5 11a21 21 0 0 1 0 27" stroke="#fff" stroke-width="4.5" stroke-linecap="round" opacity="0.45"/>
+        </svg>
+      </div>
+    </div>
+    <p class="caption">20 px · 32 px · App-Icon</p>
+
+    <div class="divider"></div>
+    <div class="lockup">
+      <svg width="26" height="26" viewBox="0 0 64 64" fill="none">
+        <defs><linearGradient id="a4" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+        </linearGradient></defs>
+        <path d="M26 5.5c10.5 0 19 8.5 19 19 0 12.5-19 30-19 30S7 37 7 24.5c0-10.5 8.5-19 19-19z" stroke="url(#a4)" stroke-width="4.5" stroke-linejoin="round"/>
+        <circle cx="26" cy="24.5" r="6.5" fill="url(#a4)"/>
+        <path d="M48 17.5a11 11 0 0 1 0 14" stroke="url(#a4)" stroke-width="4.5" stroke-linecap="round" opacity="0.85"/>
+        <path d="M55.5 11a21 21 0 0 1 0 27" stroke="url(#a4)" stroke-width="4.5" stroke-linecap="round" opacity="0.45"/>
+      </svg>
+      <span class="wordmark">Terrassenlobby</span>
+    </div>
+  </div>
+
+  <!-- ============ B ============ -->
+  <div class="card">
+    <span class="tag">Variante B</span>
+    <h2>Negativraum-Pin</h2>
+    <p>Vollflächige Kachel im Pink-Blau-Verlauf, der Pin ist ausgespart. Die kräftigste Variante –
+    funktioniert als App-Icon am besten, ist aber weniger flexibel als freistehendes Zeichen.</p>
+
+    <div class="stage">
+      <svg width="104" height="104" viewBox="0 0 64 64" fill="none">
+        <defs><linearGradient id="b1" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+        </linearGradient></defs>
+        <path fill="url(#b1)" fill-rule="evenodd" clip-rule="evenodd"
+          d="M20 0h24C55 0 64 9 64 20v24c0 11-9 20-20 20H20C9 64 0 55 0 44V20C0 9 9 0 20 0zm12 11c-8.8 0-16 7.2-16 16 0 10.5 16 26 16 26s16-15.5 16-26c0-8.8-7.2-16-16-16zm0 10.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/>
+      </svg>
+    </div>
+
+    <div class="row">
+      <div class="sizes">
+        <svg width="20" height="20" viewBox="0 0 64 64" fill="none">
+          <defs><linearGradient id="b2" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+          </linearGradient></defs>
+          <path fill="url(#b2)" fill-rule="evenodd" clip-rule="evenodd"
+            d="M20 0h24C55 0 64 9 64 20v24c0 11-9 20-20 20H20C9 64 0 55 0 44V20C0 9 9 0 20 0zm12 11c-8.8 0-16 7.2-16 16 0 10.5 16 26 16 26s16-15.5 16-26c0-8.8-7.2-16-16-16zm0 10.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/>
+        </svg>
+        <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
+          <defs><linearGradient id="b3" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+          </linearGradient></defs>
+          <path fill="url(#b3)" fill-rule="evenodd" clip-rule="evenodd"
+            d="M20 0h24C55 0 64 9 64 20v24c0 11-9 20-20 20H20C9 64 0 55 0 44V20C0 9 9 0 20 0zm12 11c-8.8 0-16 7.2-16 16 0 10.5 16 26 16 26s16-15.5 16-26c0-8.8-7.2-16-16-16zm0 10.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/>
+        </svg>
+      </div>
+      <svg width="66" height="66" viewBox="0 0 64 64" fill="none" style="border-radius:17px;box-shadow:0 10px 30px -10px rgba(255,77,151,0.7)">
+        <defs><linearGradient id="b4" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+        </linearGradient></defs>
+        <path fill="url(#b4)" fill-rule="evenodd" clip-rule="evenodd"
+          d="M20 0h24C55 0 64 9 64 20v24c0 11-9 20-20 20H20C9 64 0 55 0 44V20C0 9 9 0 20 0zm12 11c-8.8 0-16 7.2-16 16 0 10.5 16 26 16 26s16-15.5 16-26c0-8.8-7.2-16-16-16zm0 10.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/>
+      </svg>
+    </div>
+    <p class="caption">20 px · 32 px · App-Icon (Zeichen ist bereits die Kachel)</p>
+
+    <div class="divider"></div>
+    <div class="lockup">
+      <svg width="26" height="26" viewBox="0 0 64 64" fill="none">
+        <defs><linearGradient id="b5" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+        </linearGradient></defs>
+        <path fill="url(#b5)" fill-rule="evenodd" clip-rule="evenodd"
+          d="M20 0h24C55 0 64 9 64 20v24c0 11-9 20-20 20H20C9 64 0 55 0 44V20C0 9 9 0 20 0zm12 11c-8.8 0-16 7.2-16 16 0 10.5 16 26 16 26s16-15.5 16-26c0-8.8-7.2-16-16-16zm0 10.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/>
+      </svg>
+      <span class="wordmark">Terrassenlobby</span>
+    </div>
+  </div>
+
+  <!-- ============ C ============ -->
+  <div class="card">
+    <span class="tag">Variante C</span>
+    <h2>Pin als Portal</h2>
+    <p>Im Pin steckt ein offener Torbogen – die Lobby, die man betritt. Ruhigste und klassischste
+    Variante, sehr gut lesbar, aber weniger auffällig als A.</p>
+
+    <div class="stage">
+      <svg width="104" height="104" viewBox="0 0 64 64" fill="none">
+        <defs><linearGradient id="c1" x1="10" y1="4" x2="54" y2="60" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+        </linearGradient></defs>
+        <path d="M32 4c12.15 0 22 9.85 22 22 0 14.5-22 34-22 34S10 40.5 10 26C10 13.85 19.85 4 32 4z" stroke="url(#c1)" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M24 37V27a8 8 0 0 1 16 0v10" stroke="url(#c1)" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div class="row">
+      <div class="sizes">
+        <svg width="20" height="20" viewBox="0 0 64 64" fill="none">
+          <defs><linearGradient id="c2" x1="10" y1="4" x2="54" y2="60" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+          </linearGradient></defs>
+          <path d="M32 4c12.15 0 22 9.85 22 22 0 14.5-22 34-22 34S10 40.5 10 26C10 13.85 19.85 4 32 4z" stroke="url(#c2)" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M24 37V27a8 8 0 0 1 16 0v10" stroke="url(#c2)" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
+          <defs><linearGradient id="c3" x1="10" y1="4" x2="54" y2="60" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+          </linearGradient></defs>
+          <path d="M32 4c12.15 0 22 9.85 22 22 0 14.5-22 34-22 34S10 40.5 10 26C10 13.85 19.85 4 32 4z" stroke="url(#c3)" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M24 37V27a8 8 0 0 1 16 0v10" stroke="url(#c3)" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="icon-tile">
+        <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
+          <path d="M32 4c12.15 0 22 9.85 22 22 0 14.5-22 34-22 34S10 40.5 10 26C10 13.85 19.85 4 32 4z" stroke="#fff" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M24 37V27a8 8 0 0 1 16 0v10" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+    <p class="caption">20 px · 32 px · App-Icon</p>
+
+    <div class="divider"></div>
+    <div class="lockup">
+      <svg width="26" height="26" viewBox="0 0 64 64" fill="none">
+        <defs><linearGradient id="c4" x1="10" y1="4" x2="54" y2="60" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+        </linearGradient></defs>
+        <path d="M32 4c12.15 0 22 9.85 22 22 0 14.5-22 34-22 34S10 40.5 10 26C10 13.85 19.85 4 32 4z" stroke="url(#c4)" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M24 37V27a8 8 0 0 1 16 0v10" stroke="url(#c4)" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <span class="wordmark">Terrassenlobby</span>
+    </div>
+  </div>
+
+  <!-- ============ D ============ -->
+  <div class="card">
+    <span class="tag">Variante D</span>
+    <h2>Pin mit Gästen</h2>
+    <p>Drei Punkte im Pin stehen für die Leute in der Lobby – wie eine Spieleranzahl auf einem Server.
+    Freundlich und sofort verständlich, aber die Punktgruppe ist ein häufiges Motiv.</p>
+
+    <div class="stage">
+      <svg width="104" height="104" viewBox="0 0 64 64" fill="none">
+        <defs><linearGradient id="d1" x1="10" y1="4" x2="54" y2="60" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+        </linearGradient></defs>
+        <path d="M32 4c12.15 0 22 9.85 22 22 0 14.5-22 34-22 34S10 40.5 10 26C10 13.85 19.85 4 32 4z" stroke="url(#d1)" stroke-width="5" stroke-linejoin="round"/>
+        <circle cx="23" cy="24" r="4.2" fill="url(#d1)"/>
+        <circle cx="41" cy="24" r="4.2" fill="url(#d1)"/>
+        <circle cx="32" cy="35" r="4.2" fill="url(#d1)"/>
+      </svg>
+    </div>
+
+    <div class="row">
+      <div class="sizes">
+        <svg width="20" height="20" viewBox="0 0 64 64" fill="none">
+          <defs><linearGradient id="d2" x1="10" y1="4" x2="54" y2="60" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+          </linearGradient></defs>
+          <path d="M32 4c12.15 0 22 9.85 22 22 0 14.5-22 34-22 34S10 40.5 10 26C10 13.85 19.85 4 32 4z" stroke="url(#d2)" stroke-width="5" stroke-linejoin="round"/>
+          <circle cx="23" cy="24" r="4.2" fill="url(#d2)"/><circle cx="41" cy="24" r="4.2" fill="url(#d2)"/><circle cx="32" cy="35" r="4.2" fill="url(#d2)"/>
+        </svg>
+        <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
+          <defs><linearGradient id="d3" x1="10" y1="4" x2="54" y2="60" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+          </linearGradient></defs>
+          <path d="M32 4c12.15 0 22 9.85 22 22 0 14.5-22 34-22 34S10 40.5 10 26C10 13.85 19.85 4 32 4z" stroke="url(#d3)" stroke-width="5" stroke-linejoin="round"/>
+          <circle cx="23" cy="24" r="4.2" fill="url(#d3)"/><circle cx="41" cy="24" r="4.2" fill="url(#d3)"/><circle cx="32" cy="35" r="4.2" fill="url(#d3)"/>
+        </svg>
+      </div>
+      <div class="icon-tile">
+        <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
+          <path d="M32 4c12.15 0 22 9.85 22 22 0 14.5-22 34-22 34S10 40.5 10 26C10 13.85 19.85 4 32 4z" stroke="#fff" stroke-width="5" stroke-linejoin="round"/>
+          <circle cx="23" cy="24" r="4.2" fill="#fff"/><circle cx="41" cy="24" r="4.2" fill="#fff"/><circle cx="32" cy="35" r="4.2" fill="#fff"/>
+        </svg>
+      </div>
+    </div>
+    <p class="caption">20 px · 32 px · App-Icon</p>
+
+    <div class="divider"></div>
+    <div class="lockup">
+      <svg width="26" height="26" viewBox="0 0 64 64" fill="none">
+        <defs><linearGradient id="d4" x1="10" y1="4" x2="54" y2="60" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/>
+        </linearGradient></defs>
+        <path d="M32 4c12.15 0 22 9.85 22 22 0 14.5-22 34-22 34S10 40.5 10 26C10 13.85 19.85 4 32 4z" stroke="url(#d4)" stroke-width="5" stroke-linejoin="round"/>
+        <circle cx="23" cy="24" r="4.2" fill="url(#d4)"/><circle cx="41" cy="24" r="4.2" fill="url(#d4)"/><circle cx="32" cy="35" r="4.2" fill="url(#d4)"/>
+      </svg>
+      <span class="wordmark">Terrassenlobby</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

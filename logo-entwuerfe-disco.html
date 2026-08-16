@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terrassenlobby – Pin × Discokugel</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 40px 24px 64px;
+    background: #07060d; color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.011em; position: relative; overflow-x: hidden;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(50vh 50vh at 8% 0%, rgba(255,77,151,0.30), transparent 65%),
+      radial-gradient(46vh 46vh at 96% 12%, rgba(176,107,255,0.28), transparent 65%),
+      radial-gradient(48vh 48vh at 30% 100%, rgba(91,157,255,0.26), transparent 65%);
+    filter: blur(20px);
+  }
+  header { max-width: 1080px; margin: 0 auto 36px; }
+  h1 { font-size: 2rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .sub { color: rgba(255,255,255,0.5); font-size: 0.95rem; margin: 0; max-width: 62ch; line-height: 1.6; }
+  .grid { max-width: 1080px; margin: 0 auto; display: grid; gap: 20px;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .card {
+    border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.045);
+    backdrop-filter: blur(24px); border-radius: 28px; padding: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.09);
+  }
+  .tag { display:inline-block; font-size:0.68rem; font-weight:700; letter-spacing:0.09em;
+         text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:10px; }
+  .card h2 { font-size: 1.15rem; margin: 0 0 6px; }
+  .card p { margin: 0 0 20px; font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.55); }
+  .stage { display:flex; align-items:center; justify-content:center; height:150px; border-radius:20px;
+           background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); margin-bottom:18px; }
+  .row { display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+  .sizes { display:flex; align-items:flex-end; gap:14px; }
+  .icon-tile { width:66px; height:66px; border-radius:17px;
+    background: linear-gradient(135deg,#ff4d97 0%,#b06bff 52%,#5b9dff 100%);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 10px 30px -10px rgba(255,77,151,0.7); }
+  .lockup { display:flex; align-items:center; gap:9px; margin-top:18px; }
+  .wordmark { font-size:1.05rem; font-weight:700; letter-spacing:-0.02em;
+    background: linear-gradient(90deg,#ff4d97,#b06bff,#7aa8ff);
+    -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .caption { font-size:0.68rem; color:rgba(255,255,255,0.35); margin-top:8px; }
+  .divider { height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent); margin:18px 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Pin × Discokugel</h1>
+  <p class="sub">Vier Wege, beide Motive zu verschmelzen: Der Pin-Kopf <em>ist</em> die Discokugel.
+  Jede Karte zeigt das Zeichen groß, bei 20 und 32 Pixeln, als App-Icon und neben der Wortmarke.</p>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const GRAD = (id) => `<linearGradient id="${id}" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#ff4d97"/><stop offset="0.5" stop-color="#b06bff"/><stop offset="1" stop-color="#5b9dff"/></linearGradient>`;
+
+const PIN = "M32 8c9.94 0 18 8.06 18 18 0 12-18 30-18 30S14 38 14 26c0-9.94 8.06-18 18-18z";
+
+// Jede Variante als Funktion: bekommt eine eindeutige id und die Strichfarbe
+const MARKS = {
+  E: (uid, c) => `
+    <defs>${c === 'grad' ? GRAD(uid) : ''}<clipPath id="${uid}b"><circle cx="32" cy="26" r="9"/></clipPath></defs>
+    <path d="${PIN}" stroke="${c === 'grad' ? `url(#${uid})` : '#fff'}" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="32" cy="26" r="9" stroke="${c === 'grad' ? `url(#${uid})` : '#fff'}" stroke-width="3.4"/>
+    <g clip-path="url(#${uid}b)" stroke="${c === 'grad' ? `url(#${uid})` : '#fff'}" stroke-width="2.6">
+      <path d="M32 15v22M22 22h20M22 30h20"/></g>`,
+
+  F: (uid, c) => `
+    <defs>${c === 'grad' ? GRAD(uid) : ''}<clipPath id="${uid}b"><circle cx="32" cy="26" r="9"/></clipPath></defs>
+    <path d="${PIN}" stroke="${c === 'grad' ? `url(#${uid})` : '#fff'}" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="32" cy="26" r="9" stroke="${c === 'grad' ? `url(#${uid})` : '#fff'}" stroke-width="3.4"/>
+    <g clip-path="url(#${uid}b)" stroke="${c === 'grad' ? `url(#${uid})` : '#fff'}" stroke-width="2.6">
+      <path d="M32 15v22M22 22h20M22 30h20"/></g>
+    <g stroke="${c === 'grad' ? `url(#${uid})` : '#fff'}" stroke-width="3.4" stroke-linecap="round" opacity="0.75">
+      <path d="M11.2 14 6.9 11.5M52.8 14l4.3-2.5M8 26H3.5M56 26h4.5"/></g>`,
+
+  G: (uid, c) => `
+    <defs>${c === 'grad' ? GRAD(uid) : ''}
+      <mask id="${uid}m"><rect width="64" height="64" fill="#fff"/>
+        <circle cx="32" cy="25" r="10" fill="none" stroke="#000" stroke-width="3"/>
+        <g stroke="#000" stroke-width="2.6"><path d="M32 16.5v17M23 21h18M23 29h18"/></g>
+      </mask></defs>
+    <path mask="url(#${uid}m)" fill="${c === 'grad' ? `url(#${uid})` : '#fff'}"
+      d="M32 3c12.7 0 23 10.3 23 23 0 15.2-23 35-23 35S9 41.2 9 26C9 13.3 19.3 3 32 3z"/>`,
+
+  H: (uid, c) => {
+    const fill = c === 'grad' ? `url(#${uid})` : '#fff';
+    let tiles = '';
+    for (let r = 0; r < 3; r++) for (let k = 0; k < 3; k++)
+      tiles += `<rect x="${23.5 + k * 6.8}" y="${17.5 + r * 6.8}" width="5.4" height="5.4" rx="1.1"/>`;
+    return `<defs>${c === 'grad' ? GRAD(uid) : ''}<clipPath id="${uid}b"><circle cx="32" cy="26" r="9.5"/></clipPath></defs>
+      <path d="${PIN}" stroke="${fill}" stroke-width="5" stroke-linejoin="round"/>
+      <g clip-path="url(#${uid}b)" fill="${fill}">${tiles}</g>`;
+  },
+};
+
+const INFO = {
+  E: ["Variante E", "Disco-Pin", "Der Pin-Kopf ist die Discokugel – Facetten als schlichtes Linienraster. Die direkteste Verschmelzung: sofort als Party erkennbar und trotzdem klar ein Standort."],
+  F: ["Variante F", "Disco-Pin mit Licht", "Wie E, plus vier Lichtstrahlen nach außen. Die Kugel wirft Licht – gleichzeitig ein Signal, dass die Lobby offen ist. Lebendigste Variante, braucht aber etwas mehr Platz."],
+  G: ["Variante G", "Massiv mit Aussparung", "Vollflächiger Pin im Verlauf, Kugel und Facetten sind ausgestanzt. Am kräftigsten und am besten für kleine App-Icons, wirkt am wenigsten wie ein Icon-Set."],
+  H: ["Variante H", "Spiegelkacheln", "Die Kugel besteht aus einzelnen Spiegelkacheln. Am nächsten an einer echten Discokugel und sehr eigenständig – bei 20 Pixeln wird das Raster aber schnell unruhig."],
+};
+
+const svg = (key, size, mode) => {
+  const uid = `${key}${size}${mode}${Math.floor(Math.random() * 1e6)}`;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 64 64" fill="none">${MARKS[key](uid, mode)}</svg>`;
+};
+
+document.getElementById('grid').innerHTML = Object.keys(MARKS).map(key => {
+  const [tag, title, desc] = INFO[key];
+  return `<div class="card">
+    <span class="tag">${tag}</span>
+    <h2>${title}</h2>
+    <p>${desc}</p>
+    <div class="stage">${svg(key, 104, 'grad')}</div>
+    <div class="row">
+      <div class="sizes">${svg(key, 20, 'grad')}${svg(key, 32, 'grad')}</div>
+      <div class="icon-tile">${svg(key, 40, 'white')}</div>
+    </div>
+    <p class="caption">20 px · 32 px · App-Icon</p>
+    <div class="divider"></div>
+    <div class="lockup">${svg(key, 26, 'grad')}<span class="wordmark">Terrassenlobby</span></div>
+  </div>`;
+}).join('');
+</script>
+</body>
+</html>
