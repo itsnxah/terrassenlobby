@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
-import { CATEGORY_THEMES } from "@/lib/categories";
+import { CATEGORY_ORDER, CATEGORY_THEMES } from "@/lib/categories";
 import { fuzzCoordinates, geocodeAddress } from "@/lib/geo";
 import type {
   AgeRating,
@@ -14,13 +14,33 @@ import type {
   TagCategory,
 } from "@/types/party";
 
+/** Übliche Party-Kategorien – Vorauswahl, daneben bleibt "Sonstiges" frei. */
 const TAG_OPTIONS: { category: TagCategory; label: string }[] = [
   { category: "mottoparty", label: "Kostümparty" },
-  { category: "mottoparty", label: "80er Jahre" },
-  { category: "musik", label: "House" },
-  { category: "musik", label: "HipHop" },
-  { category: "aktivitaet", label: "Krimi-Ratespiel" },
-  { category: "aktivitaet", label: "Chillen" },
+  { category: "mottoparty", label: "Karneval/Fasching" },
+  { category: "mottoparty", label: "80er/90er-Party" },
+  { category: "mottoparty", label: "Neon/Blacklight" },
+  { category: "mottoparty", label: "Halloween" },
+  { category: "mottoparty", label: "Weihnachtsfeier" },
+  { category: "mottoparty", label: "Geburtstag" },
+  { category: "mottoparty", label: "Abschlussparty" },
+  { category: "mottoparty", label: "Junggesellen(innen)abschied" },
+  { category: "mottoparty", label: "Pool-/Gartenparty" },
+  { category: "musik", label: "Techno/House" },
+  { category: "musik", label: "Hip-Hop" },
+  { category: "musik", label: "Charts/Mainstream" },
+  { category: "musik", label: "Rock/Metal" },
+  { category: "musik", label: "Karaoke" },
+  { category: "musik", label: "Live-Band" },
+  { category: "musik", label: "Vinyl-Abend" },
+  { category: "aktivitaet", label: "Spieleabend" },
+  { category: "aktivitaet", label: "Grillen/BBQ" },
+  { category: "aktivitaet", label: "Filmabend" },
+  { category: "aktivitaet", label: "Sport schauen" },
+  { category: "aktivitaet", label: "Kochabend" },
+  { category: "aktivitaet", label: "Lagerfeuer" },
+  { category: "aktivitaet", label: "Trinkspiele" },
+  { category: "aktivitaet", label: "Casino-Nacht" },
   { category: "sonstiges", label: "WG-Party" },
 ];
 
@@ -616,13 +636,26 @@ export default function CreatePartyPage() {
           className="field"
         >
           <option value="">Kategorie hinzufügen…</option>
-          {TAG_OPTIONS.filter(
-            (opt) => !selectedTags.some((t) => t.label === opt.label),
-          ).map((opt) => (
-            <option key={opt.label} value={opt.label}>
-              {CATEGORY_THEMES[opt.category].emoji} {opt.label}
-            </option>
-          ))}
+          {CATEGORY_ORDER.map((category) => {
+            const options = TAG_OPTIONS.filter(
+              (opt) =>
+                opt.category === category &&
+                !selectedTags.some((t) => t.label === opt.label),
+            );
+            if (options.length === 0) return null;
+            return (
+              <optgroup
+                key={category}
+                label={`${CATEGORY_THEMES[category].emoji} ${CATEGORY_THEMES[category].label}`}
+              >
+                {options.map((opt) => (
+                  <option key={opt.label} value={opt.label}>
+                    {opt.label}
+                  </option>
+                ))}
+              </optgroup>
+            );
+          })}
           <option value={CUSTOM_OPTION_VALUE}>✨ Sonstiges (eigene Kategorie)…</option>
         </select>
 
