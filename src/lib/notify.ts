@@ -32,6 +32,23 @@ export async function notifyByEmail(
   }
 }
 
+/**
+ * Mail an Noah bei einer Neuanmeldung (siehe src/app/api/new-user-notify/route.ts).
+ * Braucht bewusst kein Bearer-Token – direkt nach dem Signup gibt es bei
+ * aktivierter E-Mail-Bestätigung noch keine Session, nur die neue Nutzer-ID.
+ */
+export async function notifyNewSignup(userId: string) {
+  try {
+    await fetch("/api/new-user-notify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId }),
+    });
+  } catch {
+    // Absichtlich ignoriert.
+  }
+}
+
 /** Dasselbe für Meldungen (siehe src/app/api/moderation-notify/route.ts). */
 export async function notifyModeration(
   reportId: string,

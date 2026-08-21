@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { LogoMark } from "@/components/LogoMark";
 import { LEGAL_VERSION } from "@/lib/legal";
+import { notifyNewSignup } from "@/lib/notify";
 
 function calculateAge(birthDate: string): number {
   const birth = new Date(birthDate);
@@ -80,6 +81,12 @@ function SignupForm() {
     if (error) {
       setErrorMsg(error.message);
       return;
+    }
+
+    // Der Profil-Datensatz existiert ab hier garantiert (Trigger in
+    // auth_trigger.sql) – unabhängig davon, ob schon eine Session besteht.
+    if (data.user) {
+      void notifyNewSignup(data.user.id);
     }
 
     // Falls in den Supabase-Auth-Einstellungen "Confirm email" aktiv ist,
