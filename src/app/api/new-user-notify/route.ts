@@ -33,11 +33,18 @@ export async function POST(request: Request) {
   const adminEmail = process.env.MODERATION_EMAIL;
 
   if (!supabaseUrl || !serviceKey || !resendKey || !adminEmail) {
+    console.log("[new-user-notify] skip: not_configured", {
+      hasSupabaseUrl: Boolean(supabaseUrl),
+      hasServiceKey: Boolean(serviceKey),
+      hasResendKey: Boolean(resendKey),
+      hasAdminEmail: Boolean(adminEmail),
+    });
     return Response.json({ skipped: "not_configured" });
   }
 
   const { userId } = (await request.json()) as Payload;
   if (!userId) {
+    console.log("[new-user-notify] skip: no userId in payload");
     return Response.json({ error: "userId nötig" }, { status: 400 });
   }
 
@@ -45,18 +52,33 @@ export async function POST(request: Request) {
     auth: { persistSession: false, autoRefreshToken: false },
   });
 
-  const { data: profile } = await admin
-    .from("profiles")
-    .select("id, display_name, created_at")
-    .eq("id", userId)
-    .maybeSingle();
+  // Der Profil-Trigger läuft asynchron zum signUp()-Aufruf – direkt danach
+  // kann die Zeile in seltenen Fällen noch nicht sichtbar sein. Daher ein
+  // paar kurze Versuche, statt beim ersten leeren Ergebnis aufzugeben.
+  let profile: { id: string; display_name: string | null; created_at: string } | null = null;
+  for (let attempt = 0; attempt < 4 && !profile; attempt++) {
+    if (attempt > 0) {
+      await new Promise((resolve) => setTimeout(resolve, 400));
+    }
+    const { data, error } = await admin
+      .from("profiles")
+      .select("id, display_name, created_at")
+      .eq("id", userId)
+      .maybeSingle();
+    if (error) {
+      console.log("[new-user-notify] profile lookup error", { attempt, error: error.message });
+    }
+    profile = data ?? null;
+  }
 
   if (!profile) {
+    console.log("[new-user-notify] skip: not_found", { userId });
     return Response.json({ skipped: "not_found" });
   }
 
   const ageMs = Date.now() - new Date(profile.created_at).getTime();
   if (ageMs > MAX_AGE_MS) {
+    console.log("[new-user-notify] skip: not_recent", { userId, ageMs });
     return Response.json({ skipped: "not_recent" });
   }
 
@@ -95,8 +117,10 @@ export async function POST(request: Request) {
 
   if (!res.ok) {
     const detail = await res.text();
+    console.log("[new-user-notify] Resend-Versand fehlgeschlagen", { status: res.status, detail });
     return Response.json({ error: "Versand fehlgeschlagen", detail }, { status: 502 });
   }
 
+  console.log("[new-user-notify] Mail verschickt an", adminEmail);
   return Response.json({ sent: true });
 }
